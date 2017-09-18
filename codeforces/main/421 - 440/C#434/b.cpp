@@ -43,24 +43,23 @@ int32_t main(){
     }
     sort(inp,inp+m);
     int cnt=0;
-    int ind;
+    int ind=-10;
     for(int i=1;i<102;i++){
         bool is=1;
         for(int j=0;j<m;j++){
-            /*
-            if(i==3){
-                cout<<inp[j].F<<' '<<inp[j].S<<' '<<inp[j].S*(i-1)<<' '<<inp[j].S*(i)<<' '<<ok(inp[j].S*(i-1),inp[j].S*(i),inp[j].F)<<endl;
-            }
-            */
+
             if(!ok((inp[j].S-1)*i,(inp[j].S)*(i),inp[j].F)){
                 is=0;
             }
         }
         if(is){
+            int tmp = ind;
             if(!cnt){
                 ind = (n/i)+1;
             }
-            cnt++;
+            if(((n/i)+1) != tmp){
+                cnt++;
+            }
         }
     }
     if(cnt==1){

@@ -13,37 +13,47 @@
 #define F first
 #define S second
 #define pb push_back
-#degfine Init ios::sync_with_stdio(0),cin.tie(0);
+#define Init ios::sync_with_stdio(0);
 
-const int MX = 2000 + 1000, inf = 0x7FFFFFFF, mod = 1000 * 1000 * 1000 + 7;
+const int MX = 70000 + 100, inf = 0x7FFFFFFF, mod = 1000 * 1000 * 1000 + 7;
 using namespace std;
-multiset<int>;
-int poww(int a , int b){
-    int ans=1;
-    for(int i=0;i<b;i++){
-        ans*=a;
+map<string,int> miz;
+int n;
+string inp[MX];
+void all(string s, bool check){
+    //cout<<":::"<< s<<' '<<check<<endl;
+    set<string> st;
+    for(int i=1;i<10;i++){
+        for(int j=0;j<9;j++){
+            if(j+i>9){
+
+                break;
+            }
+            if(!check && miz[s.substr(j,i)]==1){
+                cout<<s.substr(j,i)<<endl;
+                return;
+            }
+            if(check){
+                st.insert(s.substr(j,i));
+            }
+            //cout<<s.substr(j,i)<<' '<<miz[s.substr(j,i)]<<endl;
+        }
     }
-    return ans;
-}
-int add(int l ,int r,int x){
-    int tool=9;
-    int cnt=0;
-    while(cnt<l){
-        x=x%poww(10,tool);
-        tool--;
-        cnt++;
+    if(check){
+        for(auto e: st){
+            miz[e]++;
+        }
     }
-    while(r<tool){
-        x/=10;
-        tool--;
-    }
-    return x;
 }
 int32_t main(){
-    ios::sync_with_stdio(0);
+    Init
     cin>>n;
     for(int i=0;i<n;i++){
-
+        cin>>inp[i];
+        all(inp[i],1);
+    }
+    for(int i=0;i<n;i++){
+        all(inp[i],0);
     }
 }
 
