@@ -6,16 +6,30 @@
 #define F first
 #define S second
 #define pb push_back
+#define LSB(i) ((i)&(-i));
 
 const int inf= 0x77FFFFFF;
 const int MX = 1000*1000+10;
 using namespace std;
-int n ;
+int n;
 pair<int,int> inp[MX];
-multiset<int> st;
 map<int,int> mp;
 int f[2][MX];///f[0]:1-i, f[1]:j-n;
-int add(){
+int Fen[MX];
+int  Fen_getsum(int ind){
+    int sum = 0;
+    while(ind){
+        sum += Fen[ind];
+        ind -= LSB(ind);
+    }
+    return sum;
+}
+void Fen_update(int ind,int delta){
+    while(ind<n+1){
+        //cout << ind << delta <<endl;
+        Fen[ind] += delta;
+        ind += LSB(ind);
+    }
 }
 int32_t main(){
     ios::sync_with_stdio(0);cin.tie();
@@ -25,7 +39,7 @@ int32_t main(){
         inp[i].F = u,inp[i].S = i;
         mp[u]++;
     }
-    sort(inp,inp+n);
+    sort(inp ,inp+n);
     int lst=-1,cnt;
     for(int i=0;i<n;i++){
         if(inp[i].F == lst){
@@ -36,14 +50,13 @@ int32_t main(){
         }
         f[0][inp[i].S]=cnt;
         f[1][inp[i].S]=mp[inp[i].F]-cnt+1;
-        st.insert(f[0][inp[i].S]);
+        Fen_update(f[1][inp[i].S],1);
     }
     int ans=0;
-    for(int i=n-1;i>=0;i--){
-        auto it = st.find(f[0][i]);
-        st.erase(it);
-        ans += distance(st.upper_bound(f[1][i]),st.end());
-        cout<<st.end()-it<<endl;
+    for(int i=0;i<n;i++){
+        //cout<<f[0][i]-1 << ' ' << f[1][i] <<endl;;
+        Fen_update(f[1][i],-1);
+        ans += Fen_getsum(f[0][i]-1);
     }
     cout<<ans<<endl;
 }

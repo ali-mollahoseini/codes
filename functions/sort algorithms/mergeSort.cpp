@@ -34,7 +34,11 @@ void merge_sort(int st,int ed){
     int mid=(st+ed)/2;
     merge_sort(st,mid);
     merge_sort(mid,ed);
-    merg(st,ed);
+    //merg(st,ed);
+    merge(input+st,input+mid,input+mid,input+ed,out);
+    for(int i=st;i<ed;i++){
+        input[i] = out[i-st];
+    }
 }
 
 int32_t main(){
