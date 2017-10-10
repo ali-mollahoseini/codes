@@ -8,9 +8,12 @@
 #define pb push_back
 
 const int inf= 0x77FFFFFF;
-const int MX1 = 210;
+const int MX1 = 200*1000+1000;
+const int mod = 1000*1000*1000+7;
 using namespace std;
-string s,t;
-
+bool check(){
+    int a , b;
+}
 int32_t main(){
+
 }

@@ -22,7 +22,7 @@ void merg(int *a,int l ,int r){
     while(pt1 !=  m || pt2 != r){
         int val1 =(pt1<m)? a[pt1] : inf;
         int val2 =(pt2<r)? a[pt2] : inf;
-        if(val1<=val2){
+        if(val1<val2){
             tmp[lst++] = a[pt1++];
         }else{
             tmp[lst++] = a[pt2++];
@@ -40,7 +40,7 @@ int dAndc(int l, int r){
     while(pt1 != m || pt2 != r){
         int val1 =(pt1 < m? f[0][pt1] : inf);
         int val2 =(pt2 < r? f[1][pt2] : inf);
-        cout<<val1<<' '<<val2<<endl;
+        //cout<<val1<<' '<<val2<<endl;
         if(val1>val2){
             pt2++;
         }else{

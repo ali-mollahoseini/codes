@@ -13,22 +13,16 @@ using namespace std;
 int out[MX1],inp[MX1],n, sum;
 void unify(int fst,int lst){
     int mid=(fst+lst)/2, pt1=fst, pt2=mid, cnt=fst;
-    while(pt1<mid && pt2<lst){
-        if(inp[pt2]<inp[pt1]){
+    while(pt1<mid || pt2<lst){
+        int val1 = (pt1<mid?inp[pt1]:inf);
+        int val2 = (pt2<lst?inp[pt2]:inf);
+        if(val2<val1){
             //cerr<<sum<<" "<<pt1<<" "<<pt2<<" "<<pt2-pt1<<endl;
             sum+=mid-pt1;
             out[cnt++]=inp[pt2++];
         }else{
             out[cnt++]=inp[pt1++];
         }
-    }
-    while(pt1<mid){
-        out[cnt++]=inp[pt1++];
-    }
-    while(pt2<lst){
-        //sum+=pt2-pt1;
-        //cerr<<sum<<endl;
-        out[cnt++]=inp[pt2++];
     }
     for(int i = fst; i < lst; i++){
         inp[i] = out[i] ;

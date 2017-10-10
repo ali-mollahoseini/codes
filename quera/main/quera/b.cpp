@@ -1,5 +1,5 @@
 //in the name of Allah
-#include <iostream>
+#include <bits/stdc++.h>
 
 #define ll long long
 #define int long long
@@ -7,10 +7,9 @@
 #define S second
 #define pb push_back
 
-const int inf= 0x77FFFFFF;
-const int MX1 = 210;
+const int MX1=100*1000+1000;
+const int inf= 0x7FFFFFFF;
 using namespace std;
-string s,t;
-
 int32_t main(){
 }
+
