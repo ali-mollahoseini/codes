@@ -27,7 +27,7 @@ void add(int x, int y,int type){
         adj[y].pb(x);
 
         adj[x].pb(y);
-        adj[x^1].pb(y^1);
+        adj[y^1].pb(x^1);
     }else{
         adj[x^1].pb(y);
         adj[y^1].pb(x);
@@ -104,10 +104,10 @@ bool sat(int n){
 }
 int  bin(){
     int l =0,r =q;
-    while(l<r){
+    while(r-l>1){
         int m = (l+r)/2;
         if(sat(m)){
-            l=m+1;
+            l=m;
         }else{
             r=m;
         }
@@ -129,7 +129,6 @@ int32_t main(){
     req(i,ans,q){
         cout<<"No"<<endl;
     }
-
 }
 
 
