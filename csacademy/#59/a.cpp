@@ -8,17 +8,24 @@
 #define req(i,s,e) for(int i=s;i<e;i++)
 #define Init ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 
-const int MX = 1000*1000 + 1000,inf = 0x7FFFFFFF,mod = 1000 * 1000 * 1000 + 7;
+const int MX = 2000 + 1000,inf = 0x7FFFFFFF,mod = 1000 * 1000 * 1000 + 7;
 using namespace std;
-ofstream fout("cbarn.out");
-ifstream fin("cbarn.in");
-int seg[MX];
-
-int n;
-pair<int,int> inp[MX];
+int n, k;
+string s;
+map<char,int>mark;
 int32_t main(){
-    cin>>n;
+    cin>>n>>s;
     for(int i=0;i<n;i++){
-        cin>>inp[i].F>>inp[i].S;
+        mark[s[i]]++;
     }
+    for(int i=0;i<n;i++){
+        if(mark[s[i]]==1){
+            cout<<s[i]<<endl;
+            return 0;
+        }
+    }
+    cout<<-1<<endl;
+    return 0;
 }
+
+
